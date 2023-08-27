@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formulaire </title>
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 py-10">
+	<div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
+		<form id="project-form">
+			<div class="flex flex-wrap -mx-3 mb-4">
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<label for="project-select" class="block text-sm font-medium text-gray-700">Sélectionnez un pays:</label>
+					<select id="kpi-dropdown" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">
+						<option value="kpi1">Algerie</option>
+						<option value="kpi2">France</option>
+						<option value="kpi3">Canada</option>
+						<option value="kpi3">Maroc</option>
+					</select>
+				</div>
+				<div class="w-full md:w-1/2 px-3">
+					<label for="effictif-input" class="block text-sm font-medium text-gray-700">Effectif:</label>
+					<input type="text" id="effictif-input" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">
+				</div>
+			</div>
+
+			<div class="flex flex-wrap -mx-3 mb-4">
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<label for="project-select" class="block text-sm font-medium text-gray-700">Sélectionnez un site:</label>
+					<select id="kpi-dropdown" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">
+						<option value="kpi1">site 1</option>
+						<option value="kpi2">site 2</option>
+						<option value="kpi3">site 3</option>
+					</select>
+				</div>
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<label for="project-select" class="block text-sm font-medium text-gray-700">Sélectionnez un projet:</label>
+					<select id="kpi-dropdown" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">
+						<option value="kpi1">Projet 1</option>
+						<option value="kpi2">Projet 2</option>
+						<option value="kpi3">Projet 3</option>
+					</select>
+				</div>
+				
+			</div>
+
+			<div id="dynamic-kpi-rows">
+			<!-- Les lignes KPI ajoutées dynamiquement apparaîtront ici -->
+			</div>
+			<div class="flex flex-wrap -mx-3 mb-4">
+				<div class="w-full md:w-1/2 px-3">
+					<button type="button" id="add-kpi" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+					<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+					</svg>
+					</button>
+				</div>
+			</div>
+			<div class="mt-4">
+				<button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">Soumettre</button>
+			</div>
+		</form>
+	</div>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const addKpiButton = document.getElementById('add-kpi');
+		const dynamicKpiRows = document.getElementById('dynamic-kpi-rows');
+
+		addKpiButton.addEventListener('click', function() {
+		const kpiToAdd = document.getElementById('kpi-dropdown').value;
+		const kpiRow = document.createElement('div');
+		kpiRow.classList.add('mb-4', 'relative'); // Ajout de la classe "relative"
+		kpiRow.innerHTML = `
+		      
+			<div class="flex flex-wrap -mx-3 mb-4">
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<label class="block text-sm font-medium text-gray-700">Sélectionnez l'item:</label>
+						<select class="item-select mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">
+						<option value="item1">Item 1</option>
+						<option value="item2">Item 2</option>
+						<option value="item3">Item 3</option>
+					</select>
+				</div>
+
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<label class="block text-sm font-medium text-gray-700">Sélectionnez l'item:</label>
+					<select class="item-select mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">
+						<option value="item1">Item 1</option>
+						<option value="item2">Item 2</option>
+						<option value="item3">Item 3</option>
+					</select>
+					
+				</div>
+				
+			</div>
+		`;
+		dynamicKpiRows.appendChild(kpiRow);
+		});
+	});
+	</script>
+</body>
+</html>
